@@ -111,7 +111,7 @@ public class G1BLEManager: NSObject, ObservableObject{
     private var lastAck: UInt8? = nil
 
     
-    override init() {
+    public override init() {
         super.init()
         // Initialize CoreBluetooth central
         centralManager = CBCentralManager(delegate: self, queue: nil)
