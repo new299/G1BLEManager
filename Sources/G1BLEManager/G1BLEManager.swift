@@ -73,8 +73,8 @@ public class G1BLEManager: NSObject, ObservableObject{
     
     private var centralManager: CBCentralManager!
     // Left & Right peripheral references
-    private var leftPeripheral: CBPeripheral?
-    private var rightPeripheral: CBPeripheral?
+    public var leftPeripheral: CBPeripheral?
+    public var rightPeripheral: CBPeripheral?
     
     // Keep track of each peripheral's Write (TX) and Read (RX) characteristics
     private var leftWChar: CBCharacteristic?   // Write Char for left arm
@@ -300,13 +300,13 @@ public class G1BLEManager: NSObject, ObservableObject{
         return bmp
     }
 
-    func clear() {
+    public func clear() {
         // may need to extend the BMP becuase it doesn't seem to clear the lower part of the screen.
         // also doesn't clear some fraction of the top of the screen?
         sendImage(generateBlank1BitBMP())
     }
     
-    func sendImage(_ bmp: Data, to arm: String = "Both") {
+    public func sendImage(_ bmp: Data, to arm: String = "Both") {
         
         //let bmp = generateRandom1BitBMP()
         //print("len=\(bmp.count) bytes: " + bmp.prefix(32).map { String(format: "%02X", $0) }.joined(separator: " "))
@@ -577,16 +577,16 @@ public class G1BLEManager: NSObject, ObservableObject{
         writeData(data, to: arm)
     }
     
-    func sendText(text: String = "", counter: Int) {
+    public func sendText(text: String = "", counter: Int) {
         // Ensure counter is treated as an integer for sequence number
         sendTextCommand(seq: UInt8(Int(counter) % 256), text: text)
     }
     
-    func sendBlank() {
+    public func sendBlank() {
         sendTextCommand(seq: 0, text: "")
     }
     
-    func fetchGlassesBattery(){
+    public func fetchGlassesBattery(){
         var packet = [UInt8]()
         packet.append(0x2C)
         packet.append(0x01)
@@ -595,7 +595,7 @@ public class G1BLEManager: NSObject, ObservableObject{
         writeData(data, to: "Both")
     }
     
-    func fetchSilentMode(){
+    public func fetchSilentMode(){
         var packet = [UInt8]()
         packet.append(0x2B)
         
