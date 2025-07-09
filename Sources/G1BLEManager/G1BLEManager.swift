@@ -487,7 +487,7 @@ public class G1BLEManager: NSObject, ObservableObject{
         }
     }
     
-    func connectPair(pair: G1DiscoveredPair){
+    public func connectPair(pair: G1DiscoveredPair){
         print("Connecting pair...")
         connectionStatus = ("Connecting to pair (Channel \(pair.channel ?? 0))...")
         if pair.right != nil {
@@ -515,7 +515,7 @@ public class G1BLEManager: NSObject, ObservableObject{
         }
     }
     
-    func sendHeartbeat(counter: Int) {
+    public func sendHeartbeat(counter: Int) {
         var packet = [UInt8]()
         
         packet.append(0x25)
