@@ -5,17 +5,18 @@ import PackageDescription
 
 let package = Package(
     name: "G1BLEManager",
+    platforms: [
+        .iOS(.v13) // or higher if you really want — e.g., .iOS(.v18)
+    ],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "G1BLEManager",
-            targets: ["G1BLEManager"]),
+            targets: ["G1BLEManager"]
+        ),
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "G1BLEManager"),
-
+            name: "G1BLEManager"
+        ),
     ]
 )
