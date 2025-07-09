@@ -632,7 +632,7 @@ extension G1BLEManager: CBCentralManagerDelegate {
     }
     
     //Called when a device connects to the app
-    func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+    public func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         if peripheral == leftPeripheral {
             leftPeripheral?.discoverServices([uartServiceUUID])
         } else if peripheral == rightPeripheral {
@@ -672,7 +672,7 @@ extension G1BLEManager: CBCentralManagerDelegate {
     }
     
     // Called if a peripheral (left or right) disconnects unexpectedly
-    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+    public func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         print("Disconnected from peripheral: \(peripheral.name ?? peripheral.identifier.uuidString)")
         
         // Remove the characteristic references if any
@@ -729,7 +729,7 @@ extension G1BLEManager: CBCentralManagerDelegate {
     }
     
     //Failed to connect to device
-    func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
+    public func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         print("Failed to connect to \(peripheral.name ?? "unknown device")")
     }
 }
@@ -995,7 +995,7 @@ extension G1BLEManager: CBPeripheralDelegate {
     }
     
     // Called if a write with response completes
-    func peripheral(_ peripheral: CBPeripheral,
+    public func peripheral(_ peripheral: CBPeripheral,
                     didWriteValueFor characteristic: CBCharacteristic,
                     error: Error?) {
         if let error = error {
