@@ -61,6 +61,7 @@ public enum G1ConnectionState {
     case connectedBoth
 }
 
+@MainActor
 public class G1BLEManager: NSObject, ObservableObject{
     @Published public private(set) var connectionState: G1ConnectionState = .disconnected
     @Published public private(set) var connectionStatus: String = "Disconnected"
