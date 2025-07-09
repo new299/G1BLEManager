@@ -727,9 +727,10 @@ extension G1BLEManager: CBCentralManagerDelegate {
          //   self.centralManager.connect(peripheral, options: nil)
        // }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + reconnectDelay) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + reconnectDelay) { [peripheral] in
             self.centralManager.connect(peripheral, options: nil)
         }
+
 
     }
     
