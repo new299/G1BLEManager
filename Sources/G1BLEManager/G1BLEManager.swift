@@ -722,11 +722,13 @@ extension G1BLEManager: CBCentralManagerDelegate {
 
         // Retry after delay
         print("Attempting reconnect (\(attempts)) to peripheral: \(peripheral.name ?? peripheral.identifier.uuidString) in \(reconnectDelay) seconds")
-        DispatchQueue.main.asyncAfter(deadline: .now() + reconnectDelay) { [weak self] in
-            guard let self = self else { return }
-            Task { @MainActor in
-                self.centralManager.connect(peripheral, options: nil)
-            }
+        //DispatchQueue.main.asyncAfter(deadline: .now() + reconnectDelay) { [weak self] in
+          //  guard let self = self else { return }
+         //   self.centralManager.connect(peripheral, options: nil)
+       // }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + reconnectDelay) {
+            self.centralManager.connect(peripheral, options: nil)
         }
 
     }
