@@ -47,13 +47,13 @@ extension Int32 {
 }
 
 
-struct G1DiscoveredPair {
+public struct G1DiscoveredPair {
     var channel: Int? = nil
     var left: CBPeripheral? = nil
     var right: CBPeripheral? = nil
 }
 
-enum G1ConnectionState {
+public enum G1ConnectionState {
     case disconnected
     case connecting
     case connectedLeftOnly
