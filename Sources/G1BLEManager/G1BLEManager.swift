@@ -48,9 +48,9 @@ extension Int32 {
 
 
 public struct G1DiscoveredPair {
-    var channel: Int? = nil
-    var left: CBPeripheral? = nil
-    var right: CBPeripheral? = nil
+    public var channel: Int? = nil
+    public var left: CBPeripheral? = nil
+    public var right: CBPeripheral? = nil
 }
 
 public enum G1ConnectionState {
