@@ -727,16 +727,6 @@ extension G1BLEManager: CBCentralManagerDelegate {
          //   self.centralManager.connect(peripheral, options: nil)
        // }
         
-        nonisolated private func scheduleReconnect(for peripheral: CBPeripheral, after delay: TimeInterval) {
-            Task.detached { [weak self] in
-                try? await Task.sleep(nanoseconds: UInt64(delay * 1_000_000_000))
-                await self?.reconnectPeripheral(peripheral)
-            }
-        }
-
-
-
-
 
 
 
