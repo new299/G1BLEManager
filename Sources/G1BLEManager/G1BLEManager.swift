@@ -606,7 +606,7 @@ public class G1BLEManager: NSObject, ObservableObject{
 
 extension G1BLEManager: CBCentralManagerDelegate {
     
-    func centralManagerDidUpdateState(_ central: CBCentralManager) {
+    public func centralManagerDidUpdateState(_ central: CBCentralManager) {
         switch central.state {
         case .poweredOn:
             print("Bluetooth powered on")
@@ -624,7 +624,7 @@ extension G1BLEManager: CBCentralManagerDelegate {
 
     
     //Called when finding new device, calls handleDiscoveredPeripheral with peripheral param to manage it
-    func centralManager(_ central: CBCentralManager,
+    public func centralManager(_ central: CBCentralManager,
                         didDiscover peripheral: CBPeripheral,
                         advertisementData: [String : Any],
                         rssi RSSI: NSNumber) {
@@ -736,7 +736,7 @@ extension G1BLEManager: CBCentralManagerDelegate {
 extension G1BLEManager: CBPeripheralDelegate {
     // MARK: - CBPeripheralDelegate
     //didDiscoverServices handling
-    func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+    public func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         if let services = peripheral.services {
             for service in services {
                 // Discover the TX and RX characteristics in each service
@@ -745,7 +745,7 @@ extension G1BLEManager: CBPeripheralDelegate {
         }
     }
     
-    func peripheral(_ peripheral: CBPeripheral,
+    public func peripheral(_ peripheral: CBPeripheral,
                     didDiscoverCharacteristicsFor service: CBService,
                     error: Error?) {
 
@@ -789,7 +789,7 @@ extension G1BLEManager: CBPeripheralDelegate {
 
     
     //didUpdateNoficicationState handling
-    func peripheral(_ peripheral: CBPeripheral,
+    public func peripheral(_ peripheral: CBPeripheral,
                     didUpdateNotificationStateFor characteristic: CBCharacteristic,
                     error: Error?) {
         if let err = error {
@@ -799,7 +799,7 @@ extension G1BLEManager: CBPeripheralDelegate {
     }
     
     //didUpdateValue handling
-    func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
+    public func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         guard let data = characteristic.value else { return }
 
         // Convert Data to a byte array
