@@ -727,12 +727,13 @@ extension G1BLEManager: CBCentralManagerDelegate {
          //   self.centralManager.connect(peripheral, options: nil)
        // }
         
-        Task {
+        Task.detached { [peripheral] in
             try? await Task.sleep(nanoseconds: UInt64(reconnectDelay * 1_000_000_000))
             await MainActor.run {
                 self.centralManager.connect(peripheral, options: nil)
             }
         }
+
 
 
 
